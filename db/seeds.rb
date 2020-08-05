@@ -1,8 +1,8 @@
 #this is where I will write the seed data for my program 
 
-faith = User.create(email:"faith@gmail.com",password: "pw")
+faith = User.create(name: "Faith", email: "faith@gmail.com", password: "pw")
 
-kevin = User.create(email:"kevin@gmail.com",password: "pw")
+kevin = User.create(name: "Kevin", email: "kevin@gmail.com", password: "pw")
 
 List.create(title: "shopping list", user_id: faith.id)
 
