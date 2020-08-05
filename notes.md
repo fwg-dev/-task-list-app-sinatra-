@@ -13,3 +13,7 @@ enable :sessions # layer of security. If someone trued to login without credenti
 ***
   #undefined method "authenticate" for nil:NilClass- means that @user has a value of nil. so you have to enter valid data from seeds 
 ***
+
+find_by - returns nil 
+
+*** 
