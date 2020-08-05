@@ -17,3 +17,6 @@ enable :sessions # layer of security. If someone trued to login without credenti
 find_by - returns nil 
 
 *** 
+
+show.erb -  
+- 
