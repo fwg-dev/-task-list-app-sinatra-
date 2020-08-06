@@ -15,8 +15,11 @@
   </head>
   <body>
     <div class ="nav"> 
+      <% if logged_in? %>
       <a href="/logout">Logout</a>
-      <a href="/tasks">View All Tasks</a>
+      <a href="/lists">View All Tasks</a>
+      <a href="/lists/new">New Entry</a>
+      <%  end %>
     </div>
     <div class="wrapper">
 
