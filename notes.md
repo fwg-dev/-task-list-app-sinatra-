@@ -71,8 +71,10 @@ list/new.erb
 <form class="" action="/lists" method ="post">
   <label for="title">Title:</label>
   <input type ="text" name="title" value="">
-  <input type ="submit" name="title" value="Create New List">
+  <input type ="submit" name="" value="Create New List">
   </form>
 
   ***
-  
+  raise.params.inspect - works like binding.pry 
+  raises and error in runtime 
+  ***
