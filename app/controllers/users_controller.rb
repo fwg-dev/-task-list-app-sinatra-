@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   #find the user and log the user in (create a session) 
 
   post '/login' do 
+  # binding.pry
     @user =User.find_by(email: params[:email])
     #find the user 
     #Authenticate the user- verify user is who they say they are. 
