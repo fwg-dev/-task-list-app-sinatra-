@@ -65,3 +65,14 @@ layout.erb
     </div>
 
     *****
+
+    <h2>Create a new Entry: </h2>
+list/new.erb
+<form class="" action="/lists" method ="post">
+  <label for="title">Title:</label>
+  <input type ="text" name="title" value="">
+  <input type ="submit" name="title" value="Create New List">
+  </form>
+
+  ***
+  
