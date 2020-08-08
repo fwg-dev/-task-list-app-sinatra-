@@ -78,3 +78,11 @@ list/new.erb
   raise.params.inspect - works like binding.pry 
   raises and error in runtime 
   ***
+placeholders- perfect but not for edits.. text dissapears after you start typing 
+****
+params is subject to scope! 
+
+***
+MAJOR PROBLEMS 
+you don't want anyone to edit or delete anyone's entry 
+you don't want to create empty data
