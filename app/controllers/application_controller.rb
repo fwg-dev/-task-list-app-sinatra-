@@ -35,7 +35,8 @@ class ApplicationController < Sinatra::Base
       list.user == current_user
     end
     #this returns true or false if author can edit 
-    
+
+    #Build helper method for is redirecting if not logged in 
 
   end 
 
