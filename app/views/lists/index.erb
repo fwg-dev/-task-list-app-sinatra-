@@ -1,0 +1,7 @@
+<h1>All Posts</h1>
+<% @lists.each do |list|%>
+  <h4><a href="/lists/<%= list.id %>"><%= list.title %></a></h4>
+  <strong><%= list.created_at %></strong>
+  By: <%= list.user.name %>
+  <br></br>
+  <% end %>
