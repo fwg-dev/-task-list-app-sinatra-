@@ -1,4 +1,7 @@
 <p><%= @list.title %></p>
-<a href="/lists/<%= @list.id %>/edit">Create New List</a>
+
+<% if authorized_to_edit?(@list) %>
+<a href="/lists/<%= @list.id %>/edit">Edit List</a>
 <br></br>
 Delete Link 
+<% end %>
