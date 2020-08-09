@@ -56,18 +56,36 @@ class ListsController < ApplicationController
     set_list 
     if logged_in? 
       #2. modify/update the list entry 
-      if @list.user == current_user
+      if @list.user == current_user && params[:title] != ""
         @list.update(title: params[:title])
         #3. redirect to show page 
         redirect "/lists/#{@list.id}" 
       else 
-       redirect "/users/#{current_user.id}"
+       redirect "users/#{current_user.id}"
       end 
     else 
       redirect '/'
    end 
   end
 
+    #index route for all list entries 
+  get '/lists' do
+   @lists = List.all 
+    erb :'lists/index'
+  end
+
+  #delete entry 
+  delete '/lists/:id' do 
+    set_list
+    if authorized_to_edit?(@list)  #delete the entry #go to show page 
+      @list.destroy
+      redirect '/lists'
+    else #if you are not allowed to manage the delete--send the user back to
+      redirect '/lists'
+
+    end 
+    #go somewhere else - not deleted 
+  end 
 
   private 
 
@@ -75,9 +93,4 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end 
 
-    #index route for all list entries 
-  get '/lists' do
-   @lists = List.all 
-    erb :'lists/index'
-  end
 end 
