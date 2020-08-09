@@ -103,3 +103,23 @@ if I am the current user, show edit and delete links
 if I am not the current user, do not show edit and delete links 
 
 ****
+
+//get request - we are going to render an erb becasue we need to show something 
+//the other http verbs that change things on the backend, their job is to change something in the controller action and then send us on our way somewhere we will view something 
+
+//delete, patch, and post request actions generally end in redirects... its not their job to show us anything!
+//they take care of things on the back end 
+//
+
+***
+<form class="" action="/list/<%= @list.id %>" method="post">
+    <!-- How do I turn this form submission into a DELETE request??? -->
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete this Entry">
+  </form>
+*** 
+options to go back to login or signup 
+
+<a href="/">Back</a>
+or 
+<p>Or you can <a href="/login">log in here.</a></p>
