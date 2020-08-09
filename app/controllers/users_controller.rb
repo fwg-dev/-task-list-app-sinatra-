@@ -15,18 +15,22 @@ class UsersController < ApplicationController
     #find the user 
     #Authenticate the user- verify user is who they say they are. 
     #they have the credentials - email/password combo
-    if  @user.authenticate(params[:password])
-    #log the user in - create the user sessions
-    session[:user_id] = @user.id #actually login user in 
-    #redirect to user's landing page (show? index? dashboard?)
-    #undefined method "authenticate" for nil:NilClass- means that @user has a value of nil. so you have to enter valid data from seeds 
-     puts session
-    redirect "users/#{@user.id}"
+    if @user && @user.authenticate(params[:password])
+      #log the user in - create the user sessions
+      session[:user_id] = @user.id #actually login user in 
+      #redirect to user's landing page (show? index? dashboard?)
+      #undefined method "authenticate" for nil:NilClass- means that @user has a value of nil. so you have to enter valid data from seeds 
+    #  flash[:message] ="Welcome back #{user.name}!"
+      puts session
+     redirect "users/#{@user.id}"
 
     else 
+     
+      flash[:error] ="Wrong credentials"
       #tell user they entered invalid credentials 
       #redirect them to the landing page (show? index? dashboard?)
       #
+      redirect '/login'
     end 
 
   end 
