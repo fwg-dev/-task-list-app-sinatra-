@@ -21,9 +21,11 @@ class ListsController < ApplicationController
 
     if params[:title] != ""
       #create a new entry 
+      flash[:message] = "You've created a task list successfully"
       @list = List.create(title: params[:title], user_id: current_user.id)
       redirect "/lists/#{@list.id}"
     else 
+      flash[:error]= "Please provide valid input "
       redirect '/lists/new'
     end 
   end 
