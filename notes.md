@@ -123,3 +123,11 @@ options to go back to login or signup
 <a href="/">Back</a>
 or 
 <p>Or you can <a href="/login">log in here.</a></p>
+
+******
+// flash messages must be built in controller messages that end in redirect 
+// we want when we create, update or delete something 
+
+****
+
+with erb - we can create instant messages that can be popoluated 
