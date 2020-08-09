@@ -40,7 +40,7 @@ class ListsController < ApplicationController
   get '/lists/:id/edit' do
     set_list
     if logged_in?
-      if @list.user == current_user
+      if authorized_to_edit?(@list)
         erb :'/lists/edit'
       else 
         redirect "/users/#{current_user.id}"
@@ -68,10 +68,16 @@ class ListsController < ApplicationController
    end 
   end
 
-  #index route for all list entries 
+
   private 
 
   def set_list 
     @list = List.find(params[:id])
   end 
+
+    #index route for all list entries 
+  get '/lists' do
+   @lists = List.all 
+    erb :'lists/index'
+  end
 end 
