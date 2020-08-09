@@ -86,3 +86,20 @@ params is subject to scope!
 MAJOR PROBLEMS 
 you don't want anyone to edit or delete anyone's entry 
 you don't want to create empty data
+
+****
+<% @lists.each do |list|%>
+  <%= list.title %>
+  <%= list.created_at%>
+  <br></br>
+  <% end %>
+
+when we start an iteration within an erb tag, we don't want to use the display tag. we want to use the execution tag. so no <%= %> use <% %> instead 
+
+**** 
+show.erb 
+
+if I am the current user, show edit and delete links
+if I am not the current user, do not show edit and delete links 
+
+****
