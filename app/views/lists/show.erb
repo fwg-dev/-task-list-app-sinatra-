@@ -3,5 +3,11 @@
 <% if authorized_to_edit?(@list) %>
 <a href="/lists/<%= @list.id %>/edit">Edit List</a>
 <br></br>
-Delete Link 
+<form class ="" action ="/lists/<%= @list.id %>" method ="post">
+  <input type ="hidden" name ="_method" value="DELETE">
+  <input type ="submit" name ="" value ="Delete this List">
+</form>
 <% end %>
+
+
+
