@@ -142,3 +142,21 @@ According to active record- only validation I have is password-secure
 //validates :email, presence: true
 //validates :email, uniqueness: true
 --- this uses active record validations that prevenent creation, saving or updatung in the db if the requirements are not met
+
+************
+//#if params[:name] !="" && params[:email] != "" && params[:password] != ""
+
+eliminate this line of code in user_controllers because we have validations in the user.rb models 
+
+***********
+//flash messages only work with a new http request. They only work with a redirect! 
+
+***************
+render vs redirect- what's the only way we can have access to variables 
+// we only have access to instance variables when we render
+// we don't have access to variables with redirect 
+
+*************
+
+create method--def redirect if not logged in 
+
