@@ -127,7 +127,18 @@ or
 ******
 // flash messages must be built in controller messages that end in redirect 
 // we want when we create, update or delete something 
-
+// survive one page request and they are "gone"
+//flash is just a hash 
+// we did not require sinata flash because in config/environment.erb bundler.require requires all gems to load including sinatra-flash 
+// we build flash messages in post, patch or delete messages 
 ****
 
 with erb - we can create instant messages that can be popoluated 
+
+*****
+According to active record- only validation I have is password-secure 
+//how to add validations- add user.rb 
+//validates :name, presence: true 
+//validates :email, presence: true
+//validates :email, uniqueness: true
+--- this uses active record validations that prevenent creation, saving or updatung in the db if the requirements are not met
