@@ -1,12 +1,10 @@
 class ListsController < ApplicationController 
 
   #get list/new to render a form to create new entry
-
   get '/lists/new' do 
-
       erb :"/lists/new"
   end 
-
+  
   #post list to create a new list entry 
 
   post '/lists' do 
@@ -15,9 +13,7 @@ class ListsController < ApplicationController
     #I only want to save the entry if it has content 
     #I want to create a journal entry if user is logged in 
 
-    if !logged_in?
-      redirect '/'
-    end 
+    redirect_if_not_logged_in
 
     if params[:title] != ""
       #create a new entry 
@@ -25,7 +21,7 @@ class ListsController < ApplicationController
       @list = List.create(title: params[:title], user_id: current_user.id)
       redirect "/lists/#{@list.id}"
     else 
-      flash[:error]= "Please provide valid input "
+      flash[:error]= "Please provide valid input."
       redirect '/lists/new'
     end 
   end 
@@ -41,14 +37,11 @@ class ListsController < ApplicationController
   #render to an edit form
   get '/lists/:id/edit' do
     set_list
-    if logged_in?
-      if authorized_to_edit?(@list)
-        erb :'/lists/edit'
-      else 
-        redirect "/users/#{current_user.id}"
-      end 
+    redirect_if_not_logged_in
+    if authorized_to_edit?(@list)
+      erb :'/lists/edit'
     else 
-       redirect '/'
+       redirect "/users/#{current_user.id}"
     end 
   end
 
@@ -56,18 +49,15 @@ class ListsController < ApplicationController
   patch '/lists/:id' do
    #1.find list entry 
     set_list 
-    if logged_in? 
+    redirect_if_not_logged_in
       #2. modify/update the list entry 
-      if @list.user == current_user && params[:title] != ""
-        @list.update(title: params[:title])
-        #3. redirect to show page 
-        redirect "/lists/#{@list.id}" 
-      else 
-       redirect "users/#{current_user.id}"
-      end 
+    if @list.user == current_user && params[:title] != ""
+      @list.update(title: params[:title])
+      #3. redirect to show page 
+       redirect "/lists/#{@list.id}" 
     else 
-      redirect '/'
-   end 
+      redirect "users/#{current_user.id}"
+    end  
   end
 
     #index route for all list entries 
@@ -78,14 +68,13 @@ class ListsController < ApplicationController
 
   #delete entry 
   delete '/lists/:id' do 
-    flash[:error] = "You've deleted the task successfully"
+    flash[:message] = "You've deleted the task successfully"
     set_list
     if authorized_to_edit?(@list)  #delete the entry #go to show page 
       @list.destroy
       redirect '/lists'
     else #if you are not allowed to manage the delete--send the user back to
       redirect '/lists'
-
     end 
     #go somewhere else - not deleted 
   end 
@@ -95,5 +84,5 @@ class ListsController < ApplicationController
   def set_list 
     @list = List.find(params[:id])
   end 
-
+  
 end 
