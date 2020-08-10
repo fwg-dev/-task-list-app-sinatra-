@@ -38,7 +38,16 @@ class ApplicationController < Sinatra::Base
     #this returns true or false if author can edit 
 
     #Build helper method for is redirecting if not logged in 
+    def redirect_if_not_logged_in
+      if !logged_in?
+        flash[:error] ="Must be logged in to view this page!"
+        redirect '/'
+      end 
+    end 
 
+    def authorized_to_edit?(list)
+      list.user == current_user
+    end
   end 
 
 end
