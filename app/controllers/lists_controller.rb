@@ -78,6 +78,7 @@ class ListsController < ApplicationController
 
   #delete entry 
   delete '/lists/:id' do 
+    flash[:error] = "You've deleted the task successfully"
     set_list
     if authorized_to_edit?(@list)  #delete the entry #go to show page 
       @list.destroy
