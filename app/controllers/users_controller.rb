@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   #find the user and log the user in (create a session) 
 
   post '/login' do 
-  # binding.pry
+  
     @user =User.find_by(email: params[:email])
     #find the user 
     #Authenticate the user- verify user is who they say they are. 
@@ -22,11 +22,12 @@ class UsersController < ApplicationController
       #undefined method "authenticate" for nil:NilClass- means that @user has a value of nil. so you have to enter valid data from seeds 
     #  flash[:message] ="Welcome back #{user.name}!"
       puts session
+      flash[:message] ="Welcome, #{@user.name}!"
      redirect "users/#{@user.id}"
 
     else 
      
-      flash[:error] ="Wrong credentials"
+      flash[:error] ="Your credentials were invalid. Please signup or try again."
       #tell user they entered invalid credentials 
       #redirect them to the landing page (show? index? dashboard?)
       #
@@ -38,7 +39,6 @@ class UsersController < ApplicationController
    #this route's job is to render a signup form 
   get '/signup' do 
     #erb(render) a view 
-
     erb :signup
   end 
 
@@ -50,9 +50,9 @@ class UsersController < ApplicationController
     #I only want to persist a user that has a name, email and password 
     if params[:name] !="" && params[:email] != "" && params[:password] != ""
       #valid
-      @user = User.create(params)
+      @user = User.new(params)
       session[:user_id] = @user.id #actually login user in 
-
+      flash[:message] = "You have successdully created an account. #{@user.name} Welcome!"
       #where do I want to send my user - log user after signup  
       #let's go to the user show page
       redirect "/users/#{@user.id}"
@@ -61,6 +61,7 @@ class UsersController < ApplicationController
     else 
       #not valid 
       #will include message to user- telling what is wrong 
+      flash[:error] = "Account creation failure!: #{@user.error.full_messages.to_sentence}" 
       redirect '/signup'
     end 
   end 
@@ -74,6 +75,7 @@ class UsersController < ApplicationController
   end 
 
   get '/logout' do 
+    flash[:message] ="You've successfully logged out of your account!"
     session.clear 
     redirect'/'
   end 
