@@ -48,11 +48,13 @@ class UsersController < ApplicationController
     #params will look like: {"name"=>"fay", "email"=>"shiru@gmail.com", "password"=>"pw"}
 
     #I only want to persist a user that has a name, email and password 
-    if params[:name] !="" && params[:email] != "" && params[:password] != ""
+     @user = User.new(params)
+    if @user.save      
+     #if params[:name] !="" && params[:email] != "" && params[:password] != ""
       #valid
-      @user = User.new(params)
+      # @user = User.create(params)      
       session[:user_id] = @user.id #actually login user in 
-      flash[:message] = "You have successdully created an account. #{@user.name} Welcome!"
+      flash[:message] = "You have successdully created an account, #{@user.name}! Welcome!"
       #where do I want to send my user - log user after signup  
       #let's go to the user show page
       redirect "/users/#{@user.id}"
@@ -61,7 +63,7 @@ class UsersController < ApplicationController
     else 
       #not valid 
       #will include message to user- telling what is wrong 
-      flash[:error] = "Account creation failure!: #{@user.error.full_messages.to_sentence}" 
+      flash[:error] = "Account creation failure: #{@user.errors.full_messages.to_sentence}" 
       redirect '/signup'
     end 
   end 
@@ -70,7 +72,6 @@ class UsersController < ApplicationController
   get '/users/:id' do 
     #what do I need to do first?
     @user =User.find_by(id: params[:id])
-     
     erb :'/users/show'
   end 
 
