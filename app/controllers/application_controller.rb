@@ -45,9 +45,6 @@ class ApplicationController < Sinatra::Base
       end 
     end 
 
-    def authorized_to_edit?(list)
-      list.user == current_user
-    end
   end 
 
 end
