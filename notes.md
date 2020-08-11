@@ -160,3 +160,35 @@ render vs redirect- what's the only way we can have access to variables
 
 create method--def redirect if not logged in 
 
+****
+
+<input type="text" name="title" placeholder="Title" value =""><br><br>
+<input type="textarea" name="decription" placeholder="Description" value =""><br><br>
+<input type="text" name="due date" placeholder="Due Date" value =""><br><br>
+<input type ="submit" name="" value="Create New List">
+
+***************
+class CreateTasks < ActiveRecord::Migration[5.2]
+  def change
+    create_table :tasks do |t|
+      t.string :description
+      t.integer :due_date
+      t.integer :user_id
+      t.integer :list_id
+
+      t.timestamps null: false
+    end
+  end
+end
+
+class Task < ActiveRecord::Base
+  belongs_to :user 
+  belongs_to :list 
+end
+************************
+corneal model task description:string due_date:integer user_id:integer list_id:integer
+
+****
+rake db:create_migration NAME = 
+
+rake db:create_migration NAME = AddDetailsToLists description:string due_date:integer 
