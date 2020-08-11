@@ -189,6 +189,6 @@ end
 corneal model task description:string due_date:integer user_id:integer list_id:integer
 
 ****
-rake db:create_migration NAME = 
+rake db:create_migration NAME=add_details_to_lists
 
 rake db:create_migration NAME = AddDetailsToLists description:string due_date:integer 
