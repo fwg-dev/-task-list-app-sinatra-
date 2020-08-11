@@ -20,8 +20,8 @@ class ListsController < ApplicationController
 
     if params[:title] != ""
       #create a new entry 
-      flash[:message] = "You've created a task list successfully"
-      @list = List.create(title: params[:title], user_id: current_user.id)
+      @list = List.create(title: params[:title], user_id: current_user.id, description: params[:description], due_date: params[:due_date])
+      flash[:message] = "You've created a task list successfully." if @list.id #only display if it was assigned an id 
       redirect "/lists/#{@list.id}"
     else 
       flash[:error]= "Please provide valid input."
@@ -32,7 +32,6 @@ class ListsController < ApplicationController
   #show page for a list entry 
   get '/lists/:id' do 
     set_list 
-    
     erb :'/lists/show'
   end 
     
@@ -51,15 +50,18 @@ class ListsController < ApplicationController
   #This action's job is to 
   patch '/lists/:id' do
    #1.find list entry 
-    set_list 
     redirect_if_not_logged_in
+    set_list 
       #2. modify/update the list entry 
-    if @list.user == current_user && params[:title] != ""
-      @list.update(title: params[:title])
+    if @list.user == current_user && params[:title] &&  params[:description] &&  params[:due_date] != ""
+      @list.update(title: params[:title], description: params[:description], due_date: params[:due_date])
       #3. redirect to show page 
+      flash[:message] = "You've updated the task successfully"
        redirect "/lists/#{@list.id}" 
+
     else 
-      redirect "users/#{current_user.id}"
+      flash[:error] ="Field cannot be empty. Please provide valid input"
+      redirect "/lists/#{@list.id}/edit"
     end  
   end
 
