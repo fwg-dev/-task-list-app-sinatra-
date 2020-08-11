@@ -13,6 +13,9 @@ class ListsController < ApplicationController
     #I only want to save the entry if it has content 
     #I want to create a journal entry if user is logged in 
 
+    # if !logged_in?
+    #   redirect '/'
+    # end 
     redirect_if_not_logged_in
 
     if params[:title] != ""
