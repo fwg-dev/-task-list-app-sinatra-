@@ -1,11 +1,13 @@
-<p><%= @list.title %></p>
+<p>Title: <%= @list.title %></p>
+<p>Description: <%= @list.description%></p>
+<p>Due Date: <%= @list.due_date%></p>
 
 <% if authorized_to_edit?(@list) %>
-<a href="/lists/<%= @list.id %>/edit">Edit List</a>
+<a href="/lists/<%= @list.id %>/edit">Edit Task</a>
 <br></br>
 <form class ="" action ="/lists/<%= @list.id %>" method ="post">
   <input type ="hidden" name ="_method" value="DELETE">
-  <input type ="submit" name ="" value ="Delete this List">
+  <input type ="submit" name ="" value ="Delete Task">
 </form>
 <% end %>
 
