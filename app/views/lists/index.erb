@@ -1,7 +1,9 @@
 <h1>All Tasks</h1>
 <% @lists.each do |list|%>
   <strong><a href="/lists/<%= list.id %>"><%= list.title %></a></strong>
-  <h5><%= list.created_at %></h5>
-    By:<%= list.user.name %>
+  <!-- <h5><%= list.created_at %></h5> -->
+  <h5>Description:<%= list.description%></h5>
+  <h5>Due Date:<%= list.due_date%></h5>
+   <h5> By:<%= list.user.name %> </h5>
   <br></br>
   <% end %>
