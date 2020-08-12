@@ -11,7 +11,7 @@
 * shotgun config.ru
 
 
-** Navigate to localhost:9393 on your browser. **
+* Navigate to localhost:9393/ on your browser
 
 ## Prerequisites 
 
@@ -25,4 +25,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Authors 
 
-_Copyright <2020> <fwg-dev>_
+Copyright <2020> <fwg-dev>
+
+&copy; 2020 by [fwg-dev](https://github.com/fwg-dev)
