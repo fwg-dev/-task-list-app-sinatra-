@@ -192,3 +192,11 @@ corneal model task description:string due_date:integer user_id:integer list_id:i
 rake db:create_migration NAME=add_details_to_lists
 
 rake db:create_migration NAME = AddDetailsToLists description:string due_date:integer 
+*******
+
+class AddDetailsToLists < ActiveRecord::Migration[5.2]
+  def change
+    add_column :lists, :description, :string
+    add_column :lists, :due_date, :integer
+  end
+end
