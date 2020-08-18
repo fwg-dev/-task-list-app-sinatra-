@@ -1,3 +1,4 @@
+    
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
@@ -14,11 +15,14 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+
     <div class ="nav"> 
       <% if logged_in? %>
+      <a href="/users/<%=current_user.id%>"><p style="text-align:right;">Profile Page</p></a>
       <a href="/logout">Logout</a>
       <a href="/lists">View All</a>
       <a href="/lists/new">New Task</a>
+      
       <%  end %>
     </div>
     <div class="wrapper">
