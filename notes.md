@@ -18,7 +18,7 @@ find_by - returns nil
 
 *** 
 
-Sinatra default page- welcome page- when we load localhost: 9393- we get a new request generated from the browser that says get me nothing but / 
+Sinatra default page- welcome page- when we load localhost: 9393- we get a new request generated from the browser that says get me nothing but '/'
 the request gets processed by config.ru- our environment will load. The run ApplicationController is the first controller that will get matched. It matches get '/' do erb :welcome end and it will load the generic welcome page. 
 we want our user to go to the login page... so we redirect to login page... 
 
@@ -86,8 +86,8 @@ params is subject to scope!
 MAJOR PROBLEMS 
 you don't want anyone to edit or delete anyone's entry 
 you don't want to create empty data
-
-****
+#FIXED 
+***********
 <% @lists.each do |list|%>
   <%= list.title %>
   <%= list.created_at%>
@@ -217,3 +217,19 @@ end
 
     ****************
   <p align="right" style="vertical-align: top;"> </p>
+
+  ***************************88
+
+  #this is where I will write the seed data for my program 
+
+faith = User.create(name: "Faith", email: "faith@gmail.com", password: "pw")
+
+kevin = User.create(name: "Kevin", email: "kevin@gmail.com", password: "pw")
+
+List.create(title: "shopping list", description:"Buy eggs", due_date: "8/12/20", user_id: faith.id)
+
+List.create(title: "travel packing list", description:"pack jeans" due_date: "8/18/20",user_id: kevin.id)
+
+# Task.create(description:"Buy eggs", user_id: faith.id)
+
+# Task.create(description:"Elephant Bar",user_id: kevin.id)
