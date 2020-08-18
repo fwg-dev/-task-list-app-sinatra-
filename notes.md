@@ -200,3 +200,20 @@ class AddDetailsToLists < ActiveRecord::Migration[5.2]
     add_column :lists, :due_date, :integer
   end
 end
+
+
+   <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+    <title>TaskListAppSinatra</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+
+    <% if flash[:error]%>
+    <h3 style="color:red;"><%= flash[:error] %> </h3>
+    <%end%>
+
+    ****************
+  <p align="right" style="vertical-align: top;"> </p>
