@@ -7,40 +7,51 @@ Specs:
        I am using Sinatra to build my app
 
  - [x] Use ActiveRecord for storing information in a database
-  
-      
+      yes  
+     
  - [x] Include more than one model class (e.g. User, Post, Category)
 
+      I am using more than one moden class(User,List)
 
  - [x] Include at least one has_many relationship on your User model
   (e.g. User has_many Posts)
+    User has_many lists      
 
 
  - [x] Include at least one belongs_to relationship on another model (e.g. Post belongs_to User)
+   list belong_to user 
 
 
  - [x] Include user accounts with unique login attribute (username or email)
-
+ user will use email instead of name 
 
  - [x] Ensure that the belongs_to resource has routes for Creating, Reading, Updating and Destroying
-
+  full CRUD on list entries 
 
  - [x] Ensure that users can't modify content created by other users
 
+we don't show edit or delete links, we use helper methods in controller to ensure if edit or delete can only happen if current user owns the entry 
 
  - [x] Include user input validations
+
+ can't create empty entries 
 
 
  - [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
 
+using flash messages/errors 
 
  - [x]Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
- 
+ yes
 
 Confirm
 
  - [x] You have a large number of small Git commits
+ yes 
  - [x] Your commit messages are meaningful
+ yes 
  - [x] You made the changes in a commit that relate to the commit message
+ yes 
  - [x] You don't include changes in a commit that aren't related to the commit message
+ yes 
