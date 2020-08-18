@@ -4,11 +4,11 @@ This is a Task app that allows users to log in, sign up, and create tasks. Users
 ### Getting Started 
 
 To run this app:
-* git clone - git@github.com:fwg-dev/-task-list-app-sinatra-.git
-* bundle install
-* rake db:migrate
-* rake db:seed
-* shotgun config.ru
+* Fork and clone the repo
+* Run bundle install
+* Run rake db:migrate
+* Run rake db:seed
+* Run shotgun config.ru
 * Navigate to localhost:9393/ on your browser
 
 ### License
