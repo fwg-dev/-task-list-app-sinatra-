@@ -1,6 +1,6 @@
-<p>Title: <%= @list.title %></p>
-<p>Description: <%= @list.description%></p>
-<p>Due Date: <%= @list.due_date%></p>
+<p><b>Title:</b> <u><%= @list.title %></u></h3></p>
+<p><b>Description:</b><pre><%= @list.description%></pre></p>
+<p><b>Due Date: </b><%= @list.due_date%></p>
 
 <% if authorized_to_edit?(@list) %>
 <a href="/lists/<%= @list.id %>/edit">Edit Task</a>
