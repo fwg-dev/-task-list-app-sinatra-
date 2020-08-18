@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions # layer of security. If someone trued to login without credentials they will not be able to 
+    enable :sessions
     set :session_secret, "our_task_list_app"
     register Sinatra::Flash
   end
@@ -18,13 +18,10 @@ class ApplicationController < Sinatra::Base
     end 
   end 
 
-  #helper methods for logged in user
+  #helper methods 
   helpers do 
  
-    #returns a boolean
     def logged_in? 
-      #return true if user is logged in, otherwise false
-      #current user will return nil or the entire user
       !!current_user
     end 
 
@@ -35,9 +32,7 @@ class ApplicationController < Sinatra::Base
     def authorized_to_edit?(list)
       list.user == current_user
     end
-    #this returns true or false if author can edit 
 
-    #Build helper method for is redirecting if not logged in 
     def redirect_if_not_logged_in
       if !logged_in?
         flash[:error] ="Must be logged in to view this page!"
