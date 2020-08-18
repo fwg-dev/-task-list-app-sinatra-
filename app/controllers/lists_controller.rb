@@ -14,7 +14,8 @@ class ListsController < ApplicationController
     redirect_if_not_logged_in
 
     if params[:title] != ""
-      @list = List.create(title: params[:title], user_id: current_user.id, description: params[:description], due_date: params[:due_date])
+      @list= current_user.lists.create(params)
+      #@list = List.create(title: params[:title], user_id: current_user.id, description: params[:description], due_date: params[:due_date])
       flash[:message] = "You've created a task list successfully." if @list.id 
       redirect "/lists/#{@list.id}"
     else 
